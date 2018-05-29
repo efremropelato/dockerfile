@@ -1,4 +1,4 @@
-FROM java:8-jdk-alpine
+FROM efremropelato/alpine:3.7_64
 
 MAINTAINER Efrem Ropelato version: 0.0.1
 
@@ -18,14 +18,11 @@ RUN set -x \
 
 WORKDIR /
 COPY ./httpd.conf /etc/apache2/httpd.conf
-COPY ./tomcat /opt/tomcat/
 
-RUN chmod -R +x /opt/tomcat/bin/*.sh
+VOLUME /var/www/localhost/htdocs/
 
-VOLUME /opt/tomcat/webapps/
+WORKDIR /var/www/localhost/htdocs
 
-WORKDIR /opt/tomcat/webapps/
+EXPOSE 80
 
-EXPOSE 80 8080
-
-CMD /opt/tomcat/bin/startup.sh; httpd -D FOREGROUND;
+CMD httpd -D FOREGROUND;
