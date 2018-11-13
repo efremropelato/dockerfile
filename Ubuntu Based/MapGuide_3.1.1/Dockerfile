@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.5
 
-RUN apt update \
+RUN apt-get update \
 	\
 	&& apt-get -y upgrade \
 	\
@@ -16,4 +16,4 @@ RUN chmod +x /bin/run.sh
 
 EXPOSE 2810 2811 2812 8008 8009
 
-CMD run.sh
+CMD ["/bin/bash"]
