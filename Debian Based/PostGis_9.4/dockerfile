@@ -1,0 +1,6 @@
+FROM postgres:9.4.26
+
+RUN apt-get update \
+      && apt-get upgrade -y \
+      && apt-get install -y --no-install-recommends apt-utils \
+      && apt-get install -y postgis  postgresql-9.4-postgis  postgresql-9.4-postgis-scripts
